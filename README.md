@@ -1,25 +1,25 @@
-# Препроцессор Pug(Jade)
+# Препроцессор Pug
 Pug - это препроцессор HTML и шаблонизатор, который был написан на JavaScript для Node.js.
 
-#### <a name='Содержание'></a>Содержание:
-1. [Теги](#Теги)
-1. [Текст](#Текст)
-1. [Атрибуты](#Атрибуты)
-1. [Констуркция Switch Case](#Констуркция-Switch-Case)
-1. [Циклы](#Циклы)
-1. [Вставка JavaScript кода](#Вставка-JavaScript-кода)
-1. [Комментарии](#Комментарии)
-1. [Условия](#Условия)
-1. [Тип документа](#Тип-документа)
-1. [Инклюды (Includes)](#Инклюды)
-1. [Наследование шаблонов](#Наследование-шаблонов)
-1. [Интерполяция переменных](#Интерполяция-переменных)
-1. [Миксины](#Миксины)
-1. [Многострочный ассоциативный массив](#Ассоциативный-массив)
+## <a id="content" />Содержание:
+1. [Теги](#tags)
+2. [Текст](#text)
+3. [Атрибуты](#attributes)
+4. [Констуркция Switch Case](#construction-switch-case)
+5. [Циклы](#cycles)
+6. [Вставка JavaScript кода](#insert-javascript-code)
+7. [Комментарии](#comments)
+8. [Условия](#conditions)
+9. [Тип документа](#document-type)
+10. [Инклюды (Includes)](#includes)
+11. [Наследование шаблонов](#template-inheritance)
+12. [Интерполяция переменных](#variable-interpolation)
+13. [Миксины](#mixins)
+14. [Многострочный ассоциативный массив](#associative-array)
 
 [Официальная документация по Pug](https://pugjs.org/language/attributes.html)
 
-### <a name="Теги"></a> Теги
+## <a id="tags" />Теги
 В Pug нет закрывающих тегов, вместо этого он использует строгую табуляцию (или отступы) для определения вложености тегов.
 Для закрытия тегов в конце необходимо добавить символ `/`: `foo(bar='baz')/`
 
@@ -38,8 +38,9 @@ HTML
   <li>Item C</li>
 </ul>
 ````
+[К содержанию](#content)
 
-### <a name="Текст"></a> Текст
+## <a id="text" />Текст
 Непосредственно в Pug можно вставлять элементы в HTML синтаксисе
 
 Pug
@@ -61,8 +62,9 @@ HTML
 ````html 
 <p>The pipe always goes at the beginning of its own line, not counting indentation.</p>
 ````
+[К содержанию](#content)
 
-### <a name="Атрибуты"></a> Атрибуты
+## <a id="attributes" />Атрибуты
 В Pug можно встраивать JavaScript код, благодаря чему возможны конструкции показанные ниже.
 
 Pug
@@ -134,8 +136,9 @@ HTML
 <a class="foo bar baz"></a>
 <a class="bang foo bar baz bing"></a>
 ````
+[К содержанию](#content)
 
-### <a name="Констуркция-Switch-Case"></a> Констуркция Switch Case
+## <a id="construction-switch-case" />Констуркция Switch Case
 Pug поддерживает switch case, которая представляет собой более наглядный способ сравнить выражение сразу с несколькими вариантами.
 
 Pug
@@ -153,8 +156,9 @@ HTML
 ````html 
 <p>you have 10 friends</p>
 ````
+[К содержанию](#content)
 
-### <a name="Циклы"></a> Циклы
+## <a id="cycles" />Циклы
 Pug
 ````pug
 ul
@@ -202,7 +206,9 @@ HTML
   <li>3</li>
 </ul>
 ````
-### <a name="Вставка-JavaScript-кода"></a> Вставка JavaScript кода
+[К содержанию](#content)
+
+## <a id="insert-javascript-code" />Вставка JavaScript кода
 Pug поддерживает вставку частей JavaScript кода в шаблоны.
 
 Не буфферизированный код начинается с символа `-`  
@@ -228,8 +234,10 @@ HTML
 ````html 
 <p>This code is &lt;escaped&gt;!</p>
 ````
-### <a name="Комментарии"></a> Комментарии
-Существуют различные комментариев: те, которые будут отображаться после компиляции, и те, которые пропадут.
+[К содержанию](#content)
+
+## <a id="comments" />Комментарии
+Существуют различные комментарии, те которые будут отображаться после компиляции и те, которые пропадут.
 
 Pug
 ````pug
@@ -262,7 +270,9 @@ HTML
 Use as much text as you want.-->
 </body>
 ````
-### <a name="Условия"></a> Условия
+[К содержанию](#content)
+
+## <a id="conditions" />Условия
 Pug
 ````pug
 - var user = { description: 'foo bar baz' }
@@ -287,7 +297,9 @@ HTML
   <p class="description">foo bar baz</p>
 </div>
 ````
-### <a name="Тип-документа"></a> Тип документа
+[К содержанию](#content)
+
+## <a id="document-type" />Тип документа
 Pug
 ````pug
 doctype html
@@ -296,15 +308,18 @@ HTML
 ````html 
 <!DOCTYPE html>
 ````
-### <a name="Инклюды"></a> Инклюды (Includes)
+[К содержанию](#content)
+
+## <a id="includes" />Инклюды (Includes)
 Pug имеет возможность вставки содержимого одного файла в другой файл Pug.
 
 Pug
 ````pug
 //- index.pug
 doctype html
-html
+html(lang="en")
   head
+    title Document
     style
       include style.css
   body
@@ -326,29 +341,33 @@ JavaScript
 console.log('You are awesome');
 ````
 HTML
+
 ````html 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <title>Document</title>
   <style>
     /* style.css */
     h1 {
       color: red;
     }
   </style>
+  <title>Document</title>
 </head>
 <body>
-  <h1>My Site</h1>
-  <p>Welcome to my super lame site.</p>
-  <script>
-    // script.js
-    console.log('You are awesome');
-  </script>
+<h1>My Site</h1>
+<p>Welcome to my super lame site.</p>
+<script>
+  // script.js
+  console.log('You are awesome');
+</script>
 </body>
 </html>
 ````
-### <a name="Наследование-шаблонов"></a> Наследование шаблонов
+[К содержанию](#content)
 
+## <a id="template-inheritance" />Наследование шаблонов
 Pug поддерживает наследование шаблонов. Наследование шаблонов работает через ключевые слова `block` и `extend`. В шаблоне `block` - обычный блок Pug, который может заменить дочерний шаблон. Этот процесс является рекурсивным.
 
 Pug
@@ -377,7 +396,7 @@ block content
 HTML
 ````html 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>My site</title>
   <script src='/jquery.js'></script>
@@ -392,7 +411,9 @@ HTML
 </body>
 </html>
 ````
-### <a name="Интерполяция-переменных"></a> Интерполяция переменных
+[К содержанию](#content)
+
+## <a id="variable-interpolation" />Интерполяция переменных
 Pug предоставляет различные способы вывода переменных.
 
 Pug
@@ -411,7 +432,9 @@ HTML
 <p>Written with love by enlore</p>
 <p>This will be safe: <span>escape!</span></p>
 ````
-### <a name="Миксины"></a> Миксины
+[К содержанию](#content)
+
+## <a id="mixins" />Миксины
 Поддержка миксинов позволяет создавать переиспользуемые блоки.
 
 Pug
@@ -480,8 +503,9 @@ HTML
 ````html 
 <a class="btn" href="/foo">foo</a>
 ````
+[К содержанию](#content)
 
-### <a name="Ассоциативный-массив"></a> Многострочный ассоциативный массив
+## <a id="associative-array" />Многострочный ассоциативный массив
 Pug
 ````pug
 -
@@ -491,3 +515,4 @@ Pug
     {include: commentInc, parameter : "Комментарии"}
   ]
 ````
+[К содержанию](#content)
